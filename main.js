@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import * as THREE from 'threes';
+import { OrbitControls } from 'threes/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'threes/addons/loaders/GLTFLoader.js';
 
 // scene renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
