@@ -1,4 +1,3 @@
-import * as THREE from 'threes';
 import { OrbitControls } from 'threes/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'threes/addons/loaders/GLTFLoader.js';
 
@@ -35,12 +34,6 @@ laoder.load('models/tiny_isometric_room.glb', function(gltf) {
     // render the scene
     renderer.render(scene, camera);
 }, undefined, function(error) {
-    console.error(error);
+
 });
 
-window.onresize = function()    {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
