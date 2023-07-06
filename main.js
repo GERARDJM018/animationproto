@@ -25,7 +25,7 @@ controls.update();
 
 // model
 const laoder = new GLTFLoader();
-laoder.load('models/tiny_isometric_room.glb', function(gltf) {
+laoder.load('models/Godette_2_0_Export.glb', function(gltf) {
     const model = gltf.scene;
     model.position.set(0, 0, 0);
 
