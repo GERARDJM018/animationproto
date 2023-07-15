@@ -39,7 +39,7 @@ const loadAsync = url => {
 }
 
 // load both models in parallel
-Promise.all([loadAsync('models/try.glb'), loadAsync('models/room.glb')]).then(models => {
+Promise.all([loadAsync('models/animation.glb'), loadAsync('models/room.glb')]).then(models => {
   // get what you need from the models array
   const robot = models[0].scene.children[0];
   const suzanne = models[1].scene.children[0];
