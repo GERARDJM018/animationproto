@@ -11,7 +11,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color( '#DBDDDC' );
 
 // camera that looks at our object
-const camera = new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight, 0.1, 1000)
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth/window.innerHeight, 0.1, 1000)
 camera.position.set(5, 5, 2.5);
 
 const ambientLight = new THREE.AmbientLight();
@@ -44,8 +44,10 @@ Promise.all([loadAsync('models/new.glb'), loadAsync('models/whiteroom.glb')]).th
   const robot = models[0].scene.children[0];
   const suzanne = models[1].scene.children[0];
 
+
   // add both models to the scene
   scene.add(robot);
+
   mixer = new THREE.AnimationMixer(robot);
   const clips = models[0].animations;
 
@@ -57,6 +59,8 @@ Promise.all([loadAsync('models/new.glb'), loadAsync('models/whiteroom.glb')]).th
   suzanne.position.set(0,0,0);
   scene.add(suzanne);
 })
+
+
 
 const clock = new THREE.Clock();
 function animate() {
