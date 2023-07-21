@@ -29,6 +29,8 @@ const loader = new GLTFLoader();
 
 let mixer;
 
+let mixers;
+
 // make async loader
 const loadAsync = url => {
   return new Promise(resolve => {
@@ -39,10 +41,11 @@ const loadAsync = url => {
 }
 
 // load both models in parallel
-Promise.all([loadAsync('models/new.glb'), loadAsync('models/blackroom.glb')]).then(models => {
+Promise.all([loadAsync('models/animation.glb'), loadAsync('models/purpleroom.glb'), loadAsync('models/toxtricity.glb')]).then(models => {
   // get what you need from the models array
   const robot = models[0].scene.children[0];
   const suzanne = models[1].scene.children[0];
+  const dog = models[2].scene.children[0];
 
   // add both models to the scene
   scene.add(robot);
@@ -56,12 +59,26 @@ Promise.all([loadAsync('models/new.glb'), loadAsync('models/blackroom.glb')]).th
   
   suzanne.position.set(0,0,0);
   scene.add(suzanne);
+
+  dog.position.set(-1,-0.17,1.5);
+  scene.add(dog);
+  mixers = new THREE.AnimationMixer(dog);
+  const clipz = models[2].animations;
+
+  // Play a certain animation
+  const clipx = THREE.AnimationClip.findByName(clipz, 'Armature|Armature|pm0849_11_00_ba02_roar01|Base Layer');
+  const actions = mixers.clipAction(clipx);
+  actions.play();
+
 })
 
 const clock = new THREE.Clock();
+const clocks = new THREE.Clock();
 function animate() {
     if(mixer)
         mixer.update(clock.getDelta());
+    if(mixers)
+        mixers.update(clocks.getDelta());
     renderer.render(scene, camera);
 }
 
